@@ -1,0 +1,46 @@
+.button-save {
+    position: relative;
+    left: 26.5rem;
+    top: 1.12rem;
+    background-color: #000;
+    color: #fff;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.button-save:hover {
+    color: #fff;
+}
+
+.button-cancel {
+    position: relative;
+    left: 24rem;
+    top: 1.12rem;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.3);
+    padding: 50px;
+}
+
+.card {
+    margin-top: 2.75rem;
+    width: 39rem;
+    margin: auto;
+    padding-bottom: .5rem;
+    box-shadow: 2px 1px 2px 0px #888888;
+    border-radius: 0;
+}
+
+.form-control {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    border-radius: 0
+}
