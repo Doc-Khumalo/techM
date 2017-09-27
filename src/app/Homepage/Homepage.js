@@ -1,37 +1,58 @@
 import React from 'react';
 import './Homepage.css';
-import Modal from '../Modal/Modal';
+import ModalText from '../ModalText/ModalText';
+import ModalProduct from '../ModalProduct/ModalProduct';
 
 class Homepage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalOpen: false,
+            modalTextOpen: false,
+            modalProductOpen: false,
+            productEditor: '',
             textEditor: '',
-            textHeader: ''
+            textHeader: '',
+            productsHeader: ''
         }
     }
 
     getData(data, header) {
         this.setState({ textEditor: data, textHeader: header })
-        this.closeModal();
+        this.closeModalText();
     }
 
-    openModal() {
+    getProducts(products, headerImages) {
+        this.setState({ productEditor: products, productsHeader: headerImages })
+        this.closeModalProduct();
+    }
+
+    openModalText() {
         this.setState({
-            modalOpen: true
+            modalTextOpen: true
         });
     }
 
-    closeModal() {
+    closeModalText() {
         this.setState({
-            modalOpen: false
+            modalTextOpen: false
+        });
+    }
+
+    openModalProduct() {
+        this.setState({
+            modalProductOpen: true
+        });
+    }
+
+    closeModalProduct() {
+        this.setState({
+            modalProductOpen: false
         });
     }
 
     render() {
 
-        const { modalOpen } = this.state;
+        const { modalTextOpen, modalProductOpen, textHeader, productsHeader, textEditor, productEditor } = this.state;
 
         return (
             <div>
@@ -42,15 +63,30 @@ class Homepage extends React.Component {
                             <div className="card-header">
                                 Text
                             </div>
-                            <a href="#" className="card-block" onClick={this.openModal.bind(this)}>
-                                <h4>{this.state.textHeader}</h4>
-                                <span className="card-text">{this.state.textEditor}</span>
+                            <a href="#" className="card-block" onClick={this.openModalText.bind(this)}>
+                                <h4>{textHeader}</h4>
+                                <span className="card-text">{textEditor}</span>
+                            </a>
+                        </div>
+
+                        <div className="card">
+                            <div className="card-header">
+                                Products
+                            </div>
+                            <a href="#" className="card-block" onClick={this.openModalProduct.bind(this)}>
+                                <h4>{productsHeader}</h4>
+                                <span className="card-text">{productEditor}</span>
                             </a>
                         </div>
 
                         {/* check if the modal is open then pass props and expose function to the Modal component */}
-                        {modalOpen
-                            ? <Modal closeModal={this.closeModal.bind(this)} sendData={this.getData.bind(this)} />
+                        {modalTextOpen
+                            ? <ModalText closeModalText={this.closeModalText.bind(this)} sendData={this.getData.bind(this)} />
+                            : ''}
+
+                        {/* check if the modal is open then pass props and expose function to the Modal component */}
+                        {modalProductOpen
+                            ? <ModalProduct closeModalProduct={this.closeModalProduct.bind(this)} sendProducts={this.getProducts.bind(this)} />
                             : ''}
                     </div>
                 </div>

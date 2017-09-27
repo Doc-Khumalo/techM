@@ -1,7 +1,7 @@
 import React from 'react';
-import css from './Modal.css';
+import css from './ModalText.css';
 
-class Modal extends React.Component {
+class ModalText extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const { getData, closeModal } = this.props;
+        const { getData, closeModalText } = this.props;
         const { text, header } = this.state;
 
         return (
@@ -50,7 +50,7 @@ class Modal extends React.Component {
                             <a
                                 href="#"
                                 className="button-cancel"
-                                onClick={closeModal}>
+                                onClick={closeModalText}>
                                 Cancel
                             </a>
                             <button
@@ -67,4 +67,4 @@ class Modal extends React.Component {
     }
 }
 
-export default Modal;
+export default ModalText;
